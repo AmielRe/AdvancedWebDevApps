@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './style.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <ShoppingList></ShoppingList>
-      </div>
+      <Router>
+        <div>
+          <ShoppingList></ShoppingList>
+        </div>
+      </Router>
     );
   }
 }
@@ -23,6 +26,7 @@ class Item extends React.Component {
           {this.props.price} nis
         </div>
         <img src={`/images/${this.props.image}`}></img>
+        <Link to="/about">about</Link>
       </li>
     );
   }
