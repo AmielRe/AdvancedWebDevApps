@@ -1,51 +1,39 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React, { Component, StrictMode } from 'react';
 import './style.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Product from './Components/Product';
+import './Components/Product.css';
+import ShoppingList from './Components/ShoppingList';
+import { createRoot } from 'react-dom/client';
 
 class App extends Component {
   render() {
     return (
       <Router>
+        <div className='header__image'>
+          <img className="header__image" src="./images/siteName.png" alt="Site Main pic" />
+        </div>
         <div>
-          <ShoppingList></ShoppingList>
+          <Routes>
+            <Route path="/" element={<ShoppingList />}></Route>
+            <Route path="/product/:product" element={<Product />}>
+            </Route>
+          </Routes>
         </div>
       </Router>
     );
   }
 }
 
-class Item extends React.Component {
-  render() {
-    return (
-      <li className="ListItem">
-        <div>
-          {this.props.name}
-        </div>
-        <div>
-          {this.props.price} nis
-        </div>
-        <img src={`/images/${this.props.image}`}></img>
-        <Link to="/about">about</Link>
-      </li>
-    );
-  }
-}
 
-class ShoppingList extends Component {
-  renderItem(name, price, image){
-    return <Item name={name} price={price} image={image}></Item>;
-  }
-  
-  render() {
-    return(
-      <ul className="shoppingList">
-        {this.renderItem("Milk", "10", "milk.png")}
-        {this.renderItem("Bread", "8", "bread.png")}
-        {this.renderItem("Eggs", "12", "eggs.png")}
-      </ul>
-    )
-  }
-}
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
-render(<App />, document.getElementById('root'));
+//render(<App />, document.getElementById('root'));
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+
+export default ShoppingList;
