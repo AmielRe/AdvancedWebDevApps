@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import dataProducts from './data.json';
+import dataProducts from '../data.json';
 
 
 class Product extends Component {
