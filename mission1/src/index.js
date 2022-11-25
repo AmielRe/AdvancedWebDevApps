@@ -4,6 +4,8 @@ import './style.css';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Product from './Product';
 import './product.css';
+import dataProducts from './data.json';
+
 
 
 class App extends Component {
@@ -49,7 +51,20 @@ class ShoppingList extends Component {
 
   render() {
     return (
-      <ul className="shoppingList">
+      <div>
+        {
+          dataProducts.map(prod => {
+            return (
+              <div key={prod.Id}>
+                <ul className="shoppingList">
+                  {this.renderItem(prod.Name, prod.Price, prod.Image1)}
+                </ul>
+              </div>
+            )
+          })
+        }
+      </div>
+      /*<ul className="shoppingList">
         {this.renderItem("Milk", "10", "milk.png", "Tnuva", "milk2.png", "Fresh milk every day !")}
         {this.renderItem("Bread", "8", "bread.png", "Berman Bakery", "bread2.png", "Most delicious bread !")}
         {this.renderItem("Eggs", "12", "eggs.png", "Haim's Eggs", "eggs2.png", "Eggs straight from the hen house")}
@@ -58,7 +73,7 @@ class ShoppingList extends Component {
         {this.renderItem("Tomato", "3", "tomato.png", "Zinger Vegetables", "tomato2.png", "Fresh red juicy tomato's")}
         {this.renderItem("Cucumber", "2", "cucumber.png", "Zinger Vegetables", "cucumber2.png", "Best organic cucumber")}
         {this.renderItem("Olives", "15", "olives.png", "Zeita", "olives2.png", "Original syrian olives")}
-      </ul>
+      </ul>*/
     )
   }
 }
