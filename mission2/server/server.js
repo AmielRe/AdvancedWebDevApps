@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 var bodyParser = require('body-parser')
+const http = require('http').Server(app);
 require('dotenv/config');
 
 const port = process.env.PORT || 5000;
