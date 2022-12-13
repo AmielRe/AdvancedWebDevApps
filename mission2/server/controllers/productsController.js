@@ -11,6 +11,14 @@ const getAllProducts = async (req, res) => {
     }
 }
 
+const getProductByName = async (req, res) => {
+    const prod = await Product.findOne({
+        "name": req.params.name
+    })
+    res.status(200).json(prod);
+}
+
 module.exports = {
-    getAllProducts
+    getAllProducts,
+    getProductByName
 }

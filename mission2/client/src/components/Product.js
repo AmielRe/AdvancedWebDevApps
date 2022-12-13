@@ -2,26 +2,31 @@ import React, { Component } from 'react';
 import './Product.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
+
 
 class Product extends Component {
+
     render() {
+        const { onAddItem } = this.props;
+
+
         return (
-            <Col>
-                <Card className="mb-3" bg={'light'}>
-                    <Card.Img variant=" top" text="dark" />
-                    <Card.Body className="text-center">
-                        <Card.Title>Card Title</Card.Title>
+            <div className="App">
+                <Card className='card'>
+                    <Card.Img variant="top" src={this.props.product.image} className="card_image" />
+                    <Card.Body>
+                        <Card.Title>{this.props.product.name}</Card.Title>
                         <Card.Text>
-                            Bread
+                            {this.props.product.price}  ₪ <br />
+                            {this.props.product.description}
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button className='btn_addtocart' onClick={() => onAddItem(this.props.product)}>Add to Cart</Button>
                     </Card.Body>
-                </Card >
-            </Col>
+                </Card>
+            </div>
 
         );
     }
 }
 
-export default Product;
+export default Product
