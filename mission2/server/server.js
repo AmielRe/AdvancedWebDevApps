@@ -26,15 +26,14 @@ app.use(express.urlencoded({ extended: true }))
 //Routers
 const productsRoute = require('./routes/products');
 
-var orders = []
-app.post('/', (req, res) => {
-    orders = req.body            //POST request
-    console.log(orders)
-});
+// var orders = []
+// app.post('/', (req, res) => {
+//     orders = req.body            //POST request
+//     console.log(orders)
+// });
 
 
 const { json } = require('body-parser');
-
 
 
 app.use('/products', productsRoute)

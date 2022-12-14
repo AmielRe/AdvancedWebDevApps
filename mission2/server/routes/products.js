@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.route('/')
     .get(productsController.getAllProducts)
+    .post(productsController.saveNewOrder)
 
 
 router.route('/p/:name')

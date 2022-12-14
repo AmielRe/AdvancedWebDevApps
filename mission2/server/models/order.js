@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { default: Product } = require('../../client/src/components/Product');
+const Product = require('./product').schema;
 
 var schema = mongoose.Schema({
     products: [{             // List of all products - include quantity
@@ -8,7 +8,7 @@ var schema = mongoose.Schema({
             required: true
         },
         qty: {              // quantity
-            type: Int16Array,
+            type: Number,
             required: true
         }
     }]
